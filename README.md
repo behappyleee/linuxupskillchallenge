@@ -59,7 +59,27 @@ Day 06 (06.md) - vim --version 입력 시 vim 에 관련 된 버전 확인 및 �
 				 vim testfile
 				 
 				 vi 에디터로 들어간 후 ESC 를 한번 클릭하면 Normal 모드로 돌아감
+
+Day 07 (07.md) - Apache2 Webserver install 하기, sudo apt install apache2 명령어 입력하여 apache2 설치
+				 Apache2 Webserver 를 설치 후 http://나의ip 로 접속을 하면 WebServer Config 페이지가 처음에 로딩이 된다.
+				 서버상에서 Apache2 작동 중인지 확인하기 위하여서는 sudo systemctl status apache2 명령어를 입력하면 작동 중인지 확인이 가능
+				 맨처음 로딩 index pag 는 /var/www/html/index.html 이 맨 처음 loading 이 된다. 맨 처음 loading page 를 수정하고 싶을 시
+				 index.html 파일을 vi 에디터를 이용하여 편집 한다.
+				 Server 관리자로써 공격 가능성을 염두해 두어야 한다. apahce2 웹서버를 설치하면서 22 번 port 에 80 port 에도 취약적이 생겼다.
 				 
+				 sudo apt update / sudo apt upgrade 최신 보안 사항을 업데이트 하여주기도 한다.
+				 
+Day 08 (08.md) - 현재 서버는 2개의 서비스가 돌고 있다 sshd / Apache2 해당 2개의 서비스는 logs 를 생성한다. 
+				 Plain Text files 는 쉽게 edit 을 할 수 있는 툴들이 몇가지 있다 (grep / cat / more / less / cut / awa / tail)
+				 grep 명령어는 powerful 하면서 다루기 쉽기로 유명 하다.
+				 
+				 cat /var/log/apache2/access.log 명령어를 입력 시 해당 log 전체가 출력이 된다.
+				 less /var/log/apache2/access.log 명령어를 입력 후 화살표를 위아래로 움직이면 해당 log 를 볼 수 있다. q 를 누르면 에디터가 종료 된다.
+				 sudo less /var/log/access.log 명령어를 입력 시 서버에서 로그인 한 기록 로그 확인이 가능하다.
+				 tail /var/log/apache2/access.log 해당 파일의 끝에서 부터 10줄 을 볼 수 있다.
+				 tail -f /var/log/apache2/access.log tail 명령어 에서 -f 옵션을 붙일 시 현재 실시간 log 끝을 볼 수 있다.
+				 
+Day 09 (09.md) - Todo !!!				 
 				 
 
 				 
