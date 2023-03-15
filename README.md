@@ -79,7 +79,8 @@ Day 08 (08.md) - 현재 서버는 2개의 서비스가 돌고 있다 sshd / Apac
 				 tail /var/log/apache2/access.log 해당 파일의 끝에서 부터 10줄 을 볼 수 있다.
 				 tail -f /var/log/apache2/access.log tail 명령어 에서 -f 옵션을 붙일 시 현재 실시간 log 끝을 볼 수 있다.
 				 
-Day 09 (09.md) - Todo !!!				 
+Day 09 (09.md) - Ports Open and Close
+				 TCP/IP ports 22 / 80
 				 
 
 				 
