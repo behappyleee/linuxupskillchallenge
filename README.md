@@ -80,8 +80,79 @@ Day 08 (08.md) - 현재 서버는 2개의 서비스가 돌고 있다 sshd / Apac
 				 tail -f /var/log/apache2/access.log tail 명령어 에서 -f 옵션을 붙일 시 현재 실시간 log 끝을 볼 수 있다.
 				 
 Day 09 (09.md) - Ports Open and Close
-				 TCP/IP ports 22 / 80
+				 TCP/IP ports 22 / 80 
+				 Sysadmin 으로써 server 에서 무슨 port 가 열려있는 지 이해를 하고 있어야 한다. 왜냐하면 열려있는 Port 마다 공격 가능성이 있다.
+				 열려 있는 Port 는 적절한 Monitoring 이 필요 하다.
+				 현재 서버에는 2개의 서비스가 돌고 있다. 22 port 와 80 port 가 돌고 있다. sshd 는 for remote login, apache2 는 for web access 이다.
 				 
+				 서버에서 열려있는 Port 를 확인하기 위하여서는
+				 ss 명령어를 입력 한다 (netstat 은 old version)
+				 nmap (nmap 명령어는 default 로 설치 되어 있지는 않다. sudo apt install nmap 명령어를 입력하여 설치를 한다.)
+				 
+				 ss 를 입력 시 wide range 검색이 가능하지만 우선 ss -ltpn 명령어를 입력한다.
+				 80 과 22 open 는 모든 PC 의 Local IP Address 이다. 53 port 는 DNS 서버이다 오직 특별한 Local Address 에서만 열려있다.
+				 nmap 을 사용할 시 1000 개 이상의 port 가 확인이 가능하다. nmap 은 유명 하면서도 다루기 쉬우며 Server 에 상태를 scanning 하는 데도 많은 도움이 된다.
+				 
+				 22 번 Port 는 SSH Service 를 제공하여 준다. connect 를 시도할 시 open 될 것이다. 만약 Apache 가 80/http 도 열릴 것이다.
+				 모든 열려있는 Port 는 공격 받을 가능성을 높여준다. 최고의 방식은 사용하지 않는 서비스는 Close 상태를 시키는 것이다.
+				 
+				 하지만 localhost (127.0.0.1) 은 loopback network device 이다. bound Service 는 오직 local machine 에서만 이용이 가능하다.
+				 실제로 무슨 Port 가 외부에 노출 되어 있는지 확인을 하려면 ip a command 명령어를 사용한다.
+				 ip a - command to find the IP address 실제 네트워크 그리고 nmap 을 사용한다.
+				 
+				 Host Firewall
+				 Linux Kernel 은 built-in netfilter 라는 Firewall 이 제공 된다. 우리는 이 netfilter 를 다양하게 구성이 가능하다.
+				 low-level 은 iptables 이고 그 다음 새로 나온 것은 nftables 이다. nftables 는 매우 강력하지만 또한 매우 복잡하다.
+				 또한 가장 사용하기 쉬운 것은 ufw 이다 (uncomplicated firewall)
+				 
+				 1.
+				 `sudo iptables -L` 명령어를 입력한다.
+				 
+				 2. 
+				 `sudo apt install ufw` 명령어를 사용하요 ufw 를 설치 한다.
+				 `sudo ufw allow ssh` 
+				 `sudo ufw deny http`
+				 ! 주의 할 점은 항상 ssh 는 절대 deny 를 하면 안된다 !!! 모든 Server 에 커넥션을 잃을 것이다 !!
+				 `sudo ufw enable`
+				 
+				 `sudo iptables -L` 명령어를 입력 하면 
+				 “DROP       tcp  --  anywhere             anywhere             tcp dpt:http” 
+				 
+				 http 를 deny 하였으니 아까는 Apache webserver 를 설치하여 http 로 접근을 하였지만 http 를 deny 로 설정하여 현재는 접근이 불가하다.
+			     ApacheWebserver 가 여전히 구동 중 이지만 outside 에서는 지금은 접근이 불가능 하다. 모든 incomming traffic 은 destination port of http/80 being DROPed.
+						
+				 `sudo ufw allow http`
+				 `ufw enable`
+				 
+				 때떄로 non-standard port 를 사용이필요 할 떄가 있다.
+				 이것은 부분적으로 ssh/22 common advice 이다.
+				 `/etc/ssh/sshd_config` 를 설정하는 것을 고려를 해봐야 한다.		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 				 
 				 
