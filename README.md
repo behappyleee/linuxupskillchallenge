@@ -154,8 +154,10 @@ Day 12 (12.md) - File 을 다른 시스템과 주고 받는 것을 실습할 것
 				 Filezila 를 이용하여 ubuntu server 로 접속하였다.
 				 	
 Day 13 (13.md) - Linux 에 File 시스템은 항상 permission 과 관련이 있다. 
-				 
+				 ordinary user 로 Login 을 하였을 시 File 을 바로 Linux system 에 upload 를 하지 못하였을 것이다.
+				 Linux Permission System 은 꽤 simple 하다.
 
+				 Ownership ... 
 
 
 
