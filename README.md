@@ -150,10 +150,11 @@ Day 12 (12.md) - File 을 다른 시스템과 주고 받는 것을 실습할 것
 				 File 을 복사하는 프로토콜은 여러 프로토콜이 존재하지만 SFTP 를 파일 전송에 사용시 많은 이점이 존재한다.
 				 (No extra setup is required on your server / Top quality security / Allows browsing through the directory structure / You can create and delete folders)
 				 SFTP 프로콜을 사용하여 Linux 에 있는 파일 중 Local Desktop 으로 복사를 해보겠다.
-				 ```
-				 
-				 ```
 
+				 Filezila 를 이용하여 ubuntu server 로 접속하였다.
+				 	
+Day 13 (13.md) - Linux 에 File 시스템은 항상 permission 과 관련이 있다. 
+				 
 
 
 
