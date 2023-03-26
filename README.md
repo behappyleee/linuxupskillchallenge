@@ -144,10 +144,15 @@ Day 11 (11.md) - locate / find  / grep / which 명령어를 통하여 파일을 
 				 매우 유용한 명령어이다.
 				 `which nano` 명령어는 해당 파일이 어디서 실행 되는 지 알수가 있다.
 
-
-
-
-
+Day 12 (12.md) - File 을 다른 시스템과 주고 받는 것을 실습할 것이다.
+				 Linux 서버에서 File 을 주고받을 수 있는 여러 프로토콜이 존재한다.
+				 (SMB / AFP / WebDAV / FTP / scp / rsync / SFTP)
+				 File 을 복사하는 프로토콜은 여러 프로토콜이 존재하지만 SFTP 를 파일 전송에 사용시 많은 이점이 존재한다.
+				 (No extra setup is required on your server / Top quality security / Allows browsing through the directory structure / You can create and delete folders)
+				 SFTP 프로콜을 사용하여 Linux 에 있는 파일 중 Local Desktop 으로 복사를 해보겠다.
+				 ```
+				 
+				 ```
 
 
 
