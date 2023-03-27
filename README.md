@@ -157,13 +157,41 @@ Day 13 (13.md) - Linux 에 File 시스템은 항상 permission 과 관련이 있
 				 ordinary user 로 Login 을 하였을 시 File 을 바로 Linux system 에 upload 를 하지 못하였을 것이다.
 				 Linux Permission System 은 꽤 simple 하다.
 
-				 Ownership ... 
+				-rw------- 	1 steve  staff  	4478979  6 Feb  2011 private.txt
+				-rw-rw-r-- 	1 steve  staff  	4478979  6 Feb  2011 press.txt
+				-rwxr-xr-x 	1 steve  staff  	4478979  6 Feb  2011 upload.bin	
 
+				user 는 steve 이고 group 은 staff 이다. (r-read, w-write)
+				- private.txt => steve 는 rw 를 가지고 있고 staff 와 other people 은 아무것도 가지고 있지 않다.
 
+				- press.txt => steve 는 rw 가 가능하며 group 중 staff 는 rw 가능하다 그 외는 r (read) 만 가능하다.
 
+				- upload.bin => x(execute) steve 는 rwx 가 가능하다 group staff 는 rx 그 외도 rx 만 가능하다.
 
+				chmod 를 이용하여 Permission 변경도 가능하다. 
 
+				user 와 group 으로 나뉜다.
+				 '-rw-r--r--" Permission 은 File 을 소유한 User 와 gorup 과 other people 에게 줄 수 있다
+				Test 를 위하여 tueseday.txt 파일을 생성 하겠다. (vim tuesday.txt)
+				처음 생성시 권한은 -rw-rw-r-- 1 ubuntu ubuntu 
+				chmod u-w tuesday.txt	--> user 에 w 권한을 뻇는다.
+				chmod g-w tuesday.txt   --> group 에 w 권한을 뻇는다.
+				chmod o-r tuesday.txt	--> other user 에 r 권한을 뻇는다.
 
+				group 을 보고 싶으면 그냥 groups 를 타이핑 한다.
+				최신 Linux System 은 group 를 생성한다. group 은 요청에 따라 더해질 수 도 있다.
+
+				chmod u+w tuesday.txt	--> user 에 w 권한을 추가한다.
+				chmod g+w tuesday.txt   --> group 에 w 권한을 추가한다.
+				chmod o+r tuesday.txt	--> other user 에 r 권한을 추가한다.
+
+Day 14 (14.md) -  오늘은 User 를 추가하는 실습을 진행할 것이다.
+				  df -h 를 타이핑하여 용량을 확인한다.	
+				  Linux user 는 case-sensitive 하다.
+				  sudo add user helen 을 타이핑하여 helen user 를 추가한다.
+			      Linux 에서는 user 를 추가하면 비밀번호를 바로 묻지않으므로 수동으로 비밀번호를 추가해주어야 한다.
+
+				  user 를 추가하게 되면 /home/ 경로에 생성한 user 에 디렉토리가 자동으로 생성이 된다. 		
 
 
 
