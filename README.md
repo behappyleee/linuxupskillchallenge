@@ -193,8 +193,12 @@ Day 14 (14.md) -  오늘은 User 를 추가하는 실습을 진행할 것이다.
 
 				  user 를 추가하게 되면 /home/ 경로에 생성한 user 에 디렉토리가 자동으로 생성이 된다. 		
 
-
-
+Day 15 (15.md) - software 를 apt install 을 이용하여 다운로드를 받았을 것이다. 
+				 Linux Model 에서 소프트웨어 설치는 app store 와 매우 유사하다.
+				 Package Manager 는 Debian 과 Ubunti Distributions 에서 사용되었다
+				 Package Manager 는 apt 명령어를 사용한다.
+				 Fedora 와 RHEL CentOS 에서 yum 과 dnf 와 비슷하다.
+				 
 
 
 
