@@ -199,12 +199,63 @@ Day 15 (15.md) - software 를 apt install 을 이용하여 다운로드를 받�
 				 Package Manager 는 apt 명령어를 사용한다.
 				 Fedora 와 RHEL CentOS 에서 yum 과 dnf 와 비슷하다.
 				 
-
-
-
-
-
-
-
+Day 16 (16.md) - System 관리자로써 archives 파일들을 잘 다루어야 한다.
+				 가장 중요한 책임으로는 소프트웨어 설치와 backup 관리를 주요하게 하게 된다.
+				 window 에서는 zip 파일이 쓰이지만 Linux System 은 약간 다르다. Linux System은
+				 파일들을 모으고 압출하는 것을 한번에 끝내 버린다.
+				 현재 Linux 파일들을 snapshop 처럼 만들 수 있다.<br />
+				 ```
+				 tar  -cvf  myinits.tar  /etc/init.d/
+				 ```
+				 해당 명령어는 현재 directory 에 tar 압축파일을 만들어 준다.
+				 옵션 -v(verbose) 는 feedback 을 포함하는 거다. 전통적으로 압축을 실패하더라도 feedback 을 주지 않았지만 해당 명령어는 압축 실패시 피드백을 준다.
+				 -f 옵션은 the output should go to the filename which follows, so in this case the order of the switches is important.
 				 
+				 tar 확장자는 tape archive 를 줄인거다.
+				 GnuZip 파일을 다음 명령어로도 만들 수 있다.
+				 ```
+				 gzip myinits.tar
+				 ```
 				 
+				 -c 옵션은 creating archive 
+				 -v 옵션은 verbose command 를 만들기 위함
+				 -z 옵션은 결과를 압축함
+				 -f 옵션은 output을 특정함
+				 
+				 ```
+				 tar -cvzf myinits.tgz /etc/init.d/
+				 ```
+
+Day - 17 (17.md) - 일반적으로 project 파일들은 source file 들을 제공한다. 
+				   installed a standard bundle of common compilers and similar tools. On ubuntu (build-essential)
+				   ```
+				   sudo apt install build-essential
+				   ```
+				   nmap 이 설치 되어있는지 확인한다.
+				   ```
+				   nmap -v 
+				   ```
+				   어떤것이 executable 이 되었는지 해당 명령어로 확인
+				   ```
+				   which nmap
+				   ```
+				   wget 을 이용하여 nmap 7.70 버전을 다운 받는다
+				   ```
+				   wget -v https://nmap.org/dist/nmap-7.70.tar.bz2
+				   ```
+				   파일이름의 제일 끝은 확장자이다. 
+				   해당 명령어를 통하여 압추된 파일을 풀어준다.
+				   ```
+				   tar -j -x -v -f nmap-7.70.tar.bz2
+				   ```
+				   압축 풀기를 완료한 후에 ls -ltr 로 파일 목록을 확인한다.
+				   압축이 풀린 파일이 확인 될 것이다.
+				   nmap 을 설치하기 위하여서는 
+				   cd nmap-7.70 디렉 토리로 이동 후
+				   ./configure (Server 를 체크 하는 명령어 ARM 인지 Intel 인지 ... )를 실행시켜 준다.
+				   그 다음 make (software 를 compile 한다. 보통 GNU compiler gcc 라고 한다.)를 입력하여 준다.
+				   그 다음 make install (file 들을 compile 하며 문서나 그 외다른 시스템.. scheduled tasks 들을 실행 한다)명령어를 입력하여 준다.
+				   
+
+
+
