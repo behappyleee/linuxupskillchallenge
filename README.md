@@ -255,6 +255,18 @@ Day - 17 (17.md) - 일반적으로 project 파일들은 source file 들을 제�
 				   ./configure (Server 를 체크 하는 명령어 ARM 인지 Intel 인지 ... )를 실행시켜 준다.
 				   그 다음 make (software 를 compile 한다. 보통 GNU compiler gcc 라고 한다.)를 입력하여 준다.
 				   그 다음 make install (file 들을 compile 하며 문서나 그 외다른 시스템.. scheduled tasks 들을 실행 한다)명령어를 입력하여 준다.
+
+Day - 18 (18.md) - Remote Server 를 관리하는 관리자라면 Log 가 굉장히 중요한 요소이다.
+				   하지만 disk 공간이 최대 적이다. 그래서 Log 는 굉장히 효율있게 사용해야 한다.
+				   logrotate 어플리케이션은 Log 기한 설정 및 Log 상황을 항상 확인하여 주며 server 공간을 위하여 압축도 해주고 굉장히 유용하다.
+
+				   Log 디렉토리는 /var/log 이다 예를 들어 apache2 Log 는 Subdirectory 로 /var/log/apache2 이다.
+				   System Log 는 /var/log/syslog 에 기록 되며 압축 된 System 예전 Log 는 /var/log/syslog.1.gz 에 서 볼 수 있다.
+
+				   Rotate 돌리는 방법은 /etc/cron.daily 에서 cron 설정을 한다. 해당 파일에서 logrotate 를 cron 설정을 해주면 된다.
+
+
+
 				   
 
 
