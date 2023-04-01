@@ -266,8 +266,34 @@ Day - 18 (18.md) - Remote Server 를 관리하는 관리자라면 Log 가 굉장
 				   Rotate 돌리는 방법은 /etc/cron.daily 에서 cron 설정을 한다. 해당 파일에서 logrotate 를 cron 설정을 해주면 된다.
 
 
-
+Day - 19 (19.md) -  Linux 는 다양한 FileSystem 을 지원한다. 
+					Linux 는 filename 과 실제 data 에 실제 외부 Layer 를 하나 더 가지고 있다 이것을 inode 라고 한다.
+					이것은 숫자 벨류이며 가장 쉽게 2가지 방법으로 확인이 가능하다.
+					
+					ls 명령어에 -i 옵션을 사용한다.
+					```
+					ls -li /etc/hosts
+					```
 				   
+					273 -rw-r--r-- 1 root root 221 Jan 31 08:37 /etc/hosts
+					가 출력 된다.
 
+					그 다음 방법은 stat 명령어를 사용한다
+					```
+					stat /etc/hosts
+					```
 
+					File: /etc/hosts
+					Size: 221             Blocks: 8          IO Block: 4096   regular file
+					Device: ca01h/51713d    Inode: 273         Links: 1
+					Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+					Access: 2023-04-01 14:36:48.351552052 +0000
+					Modify: 2023-01-31 08:37:12.000000000 +0000
+					Change: 2023-01-31 15:52:25.965836000 +0000
+					Birth: -
 
+					가 출력 된다.
+
+					모든 filename 에는 points 가 inode 에 있다. (실제 데이터를 가르키는)
+					이 의미는 몇몇 파일 이름들은 같은 inode 를 가르킬 수 도 있다.
+					
