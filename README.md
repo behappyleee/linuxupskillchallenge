@@ -295,5 +295,26 @@ Day - 19 (19.md) -  Linux 는 다양한 FileSystem 을 지원한다.
 					가 출력 된다.
 
 					모든 filename 에는 points 가 inode 에 있다. (실제 데이터를 가르키는)
-					이 의미는 몇몇 파일 이름들은 같은 inode 를 가르킬 수 도 있다.
-					
+					이 의미는 몇몇 파일 이름들은 같은 inode 를 가르킬 수 도 있다 contents 도 똑같다.
+					이것은 hard link 라고 불리는 전형적인 기술이다.
+					중요한 사항은 Permission 관점이나 소유자, FIilenames 의 Date 이러한 사항들은 inode level 에서 지켜지고 있다.
+
+					```
+					ln /etc/passwd link1
+					```
+
+					해당 명령어 입력 후
+
+					```
+					ln -s /etc/passwd link2 
+					```
+					해당 명렬어를 입력 시 ls -li 명령어를 입력하면 sysbolic link (or symlink) 가 생긴다.
+
+					```
+					ls -li
+					```
+					명령어를 입력하면 file 의 결과를 확인할 수 있다.
+
+					대부분의 symlinks 는 실제 script 소스인 /etc/init.d 에 존재한다.
+
+
