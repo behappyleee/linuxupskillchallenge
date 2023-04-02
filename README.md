@@ -316,5 +316,63 @@ Day - 19 (19.md) -  Linux 는 다양한 FileSystem 을 지원한다.
 					명령어를 입력하면 file 의 결과를 확인할 수 있다.
 
 					대부분의 symlinks 는 실제 script 소스인 /etc/init.d 에 존재한다.
+					inode 는Unix 계통 파일 시스템에서 사용하는 자료 구조 이다.
+					Linux 에 모든 파일 / 디렉토리는 한개씩 inode 를 가지고 있다.
+
+
+Day - 20 (20.md) - Command Line 명령어 입력시에 "the command interpreter" 	
+		           와 커뮤니케이션을 하게 된다.
+				   이것을 Shell 이라고 한다. 보통 Shell 은 Bash 이다. 
+				   Shell Script 와 Bash Script 을 만들어서 사용 하여야 하는 이유는 몇 가지가 있다.
+				   1. 타이핑을 줄여 준다. 2. Parameters  (Script 는 어떤 Parameter 를 설정 하느냐에 따라 실행이 달라 질 수도 있다.) 3. 자동화 (Script 를 이용하여 자동화를 할 수 있다.)
+				   
+				   Script 파일은 단순한 Text 파일이다.
+
+				   실제 코드를 작성하기 전에 맨 앞에 해당 명령어를 작성한다.
+				   ```
+				   #!/bin/bash
+				   ```
+				   해당 명령어는 해당 파일이 System 에게 셸 스크립트 파일이라고 알려 주는 명령어이다.
+				   # 뜻은 주석이라는 의미 이고 
+				   ! 뜻은 interpreted as: "please feed the rest of this to the /bin/bash program, which will interpret it as a script". 라는 의미 이다.
+				   	
+					실습 
+					1. /home/ directory 로 이동하여 셸 스크립트를 작성할 텍스트 파일을 생성
+					```
+					vim attacker
+					```
+					
+					2. 해당 내용을 attacker 텍스트 파일에 스크립트 작성
+					```
+					#!/bin/bash
+					#
+					#   attacker - prints out the last failed login attempt
+					#
+					echo "The last failed login attempt came from IP address:"
+					grep -i "disconnected from" /var/log/auth.log|tail -1| cut -d: -f4| cut -f7 -d" "
+					```
+
+
+					3. chmod +x attacker 해당 명령어를 입력하여 실행 권한 부여
+
+
+					4. attacker Shell Script 파일을 실행
+					보통 두 가지 방법이 있는데 셸 스크립트 파일 디렉토리로 이동하여 스크립트 파일을 실행을 하는 것과
+
+					```
+					/home/test/attacker
+					```
+					절대 경로를 입력하여 실행 하는 두 가지 방법이 존재	
+					```
+					./attacker
+					```
+
+					Sehll Script 는 확장도 가능하다. 만약 Script 파일에서 한가지 파라미터가 필요하지만 입력하지 않았을 시 화면에 문구를 Printing 하여주는 것도 가능하다.
+
+					
+
+
+
+
 
 
